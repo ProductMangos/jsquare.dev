@@ -20,7 +20,7 @@
 
         body {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto;
             background-color: var(--black);
             color: var(--white);
         }
@@ -67,8 +67,19 @@
             text-decoration-thickness: 2px;
             text-underline-offset: 3px;
         }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            color: var(--lightgrey);
+            font-size: 14px;
+        }
     </style>
 </head>
+<main></main>
+<footer></footer>
 <body>
     <header>
         <div>
@@ -85,6 +96,9 @@
             <li><a>LinkedIn</a></li>
         </ul>
     </nav>
+    <footer>
+        <p> &copy; <span id="date"></span> Jordan Cuadrado & Square Innovations LLC</p>
+    </footer>
     <script>
         const links = document.querySelectorAll('nav ul li');
         links.forEach(link => {
@@ -93,6 +107,10 @@
                 link.classList.add('active');
             });
         });
+
+        const date = new Date();
+        const year = date.getFullYear();
+        document.getElementById('date').innerHTML = year;
     </script>
 </body>
 </html>
