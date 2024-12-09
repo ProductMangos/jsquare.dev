@@ -37,7 +37,7 @@
             font-size: 20px;
         }
         nav {
-            margin-top: 40px;
+            margin-top: 50px;
         }
         nav ul {
             list-style: none;
@@ -78,24 +78,23 @@
         }
     </style>
 </head>
-<main></main>
-<footer></footer>
 <body>
     <header>
         <div>
             <h1>Jordan Cuadrado</h1>
             <h2>Software Developer from the 'Burg'</h2>
         </div>
-        <div style="width: 300px; height: 300px; background-color: black"></div>
+        <img src="assets/JC02.jpg" width="200" height="auto" alt="Jordan Cuadrado" style="border-radius: 10%;" />
     </header>
     <nav>
         <ul>
-            <li class="active"><a href="index.html">Home</a></li>
+            <li class="active"><a>Home</a></li>
             <li><a>Blog</a></li>
             <li><a>Github</a></li>
             <li><a>LinkedIn</a></li>
         </ul>
     </nav>
+    <main></main>
     <footer>
         <p> &copy; <span id="date"></span> Jordan Cuadrado & Square Innovations LLC</p>
     </footer>
@@ -105,12 +104,34 @@
             link.addEventListener('click', () => {
                 links.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
+
+                const url = new URL(window.location);
+                url.searchParams.set('section', link.textContent.toLowerCase());
+                window.history.pushState({}, '', url);
+
+                if (link.textContent === 'Home') {
+                    fetchPage('pages/about.html');
+                } else {
+                    fetchPage(`pages/${link.textContent.toLowerCase()}.html`);
+                }
+           
             });
         });
 
         const date = new Date();
         const year = date.getFullYear();
         document.getElementById('date').innerHTML = year;
+
+
+       const fetchPage = (url) => {
+            fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                document.querySelector('main').innerHTML = data;
+            });
+        }
+
     </script>
 </body>
 </html>
