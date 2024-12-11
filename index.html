@@ -106,8 +106,8 @@
         <ul>
             <li class="active"><a>Home</a></li>
             <li><a>Blog</a></li>
-            <li><a>Github</a></li>
-            <li><a>LinkedIn</a></li>
+            <li><a href="https://github.com/ProductMangos/ProductMangos">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/jordan-cuadrado-01b96a105/">LinkedIn</a></li>
         </ul>
     </nav>
     <main></main>
@@ -116,7 +116,17 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            fetchPage('pages/about.html');
+            const url = new URL(window.location);
+            const section = url.searchParams.get('section');
+            if (section !== null) {
+                if (section === 'home') {
+                    fetchPage(`pages/about.html`);
+
+                } else {
+                    fetchPage(`pages/${section}.html`);
+                }
+            } 
+            
         });
 
         const links = document.querySelectorAll('nav ul li');
@@ -126,13 +136,14 @@
                 link.classList.add('active');
 
                 const url = new URL(window.location);
-                url.searchParams.set('section', link.textContent.toLowerCase());
-                window.history.pushState({}, '', url);
+
 
                 if (link.textContent === 'Home') {
                     fetchPage('pages/about.html');
-                } else {
+                    updateUrl(url);
+                } else if (link.textContent === 'Blog') {
                     fetchPage(`pages/${link.textContent.toLowerCase()}.html`);
+                    updateUrl(url);
                 }
            
             });
@@ -141,6 +152,11 @@
         const date = new Date();
         const year = date.getFullYear();
         document.getElementById('date').innerHTML = year;
+
+        const updateUrl = (url) => {
+            url.searchParams.set('section', 'home');
+            window.history.pushState({}, '', url);
+        }
 
 
        const fetchPage = (url) => {
