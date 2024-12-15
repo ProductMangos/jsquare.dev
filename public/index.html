@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jordan Cuadrado</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>Jordan Cuadrado</h1>
+                <h2>Software Developer from the 'Burg'</h2>
+            </div>
+            <img
+                src="assets/JC02.jpg"
+                width="200"
+                height="auto"
+                alt="Jordan Cuadrado"
+                style="border-radius: 10%"
+            />
+        </header>
+        <nav>
+            <ul>
+                <li class="active"><a data-route="home">Home</a></li>
+                <li><a data-route="blog">Blog</a></li>
+                <li>
+                    <a href="https://github.com/ProductMangos/ProductMangos"
+                        >Github</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://www.linkedin.com/in/jordan-cuadrado-01b96a105/"
+                        >LinkedIn</a
+                    >
+                </li>
+            </ul>
+        </nav>
+        <main></main>
+        <footer>
+            <p>
+                &copy; <span id="date"></span> Jordan Cuadrado & Square
+                Innovations LLC
+            </p>
+        </footer>
+        <script>
+            const main = document.querySelector("main");
+
+            document.addEventListener("load", () => {});
+
+            const fetchPage = async (url) => {
+                const headers = [["Content-Type", "text/html"], ["Accept"]];
+
+                try {
+                    const response = await fetch(url, {
+                        method: "GET",
+                        headers: {
+                            Accept: "text/html",
+                        },
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Response status: ${response.status}`);
+                    }
+
+                    const html = await response.text();
+                    main.innerHTML = html;
+                } catch (error) {
+                    console.error(error.message);
+                }
+            };
+
+            // const fetchPage = (url) => {
+            //     fetch(url)
+            //         .then((response) => response.text())
+            //         .then((data) => {
+            //             const parser = new DOMParser();
+            //             const doc = parser.parseFromString(data, "text/html");
+            //             main.innerHTML = doc.body.innerHTML;
+
+            //             const scriptTags = doc.querySelectorAll("script");
+            //             scriptTags.forEach((script) => {
+            //                 const newScript = document.createElement("script");
+            //                 newScript.innerHTML = script.innerHTML;
+            //                 document.body.appendChild(newScript);
+            //             });
+            //         })
+            //         .catch((error) => {
+            //             console.error("Error fetching page:", error);
+            //         });
+            // };
+
+            // document.addEventListener("DOMContentLoaded", () => {
+            //     routes["/"] = () => fetchPage("pages/about.html");
+            //     routes["/blog"] = () => fetchPage("pages/blog.html");
+            //     routes["/404"] = () => fetchPage("pages/404.html");
+            // });
+
+            // const routes = {
+            //     "/": () => fetchPage("pages/about.html"),
+            //     "/blog": () => fetchPage("pages/blog.html"),
+            //     "/404": () => fetchPage("pages/404.html"),
+            // };
+
+            // const navigate = (path) => {
+            //     window.history.pushState({}, "", path);
+            //     const routeHandler = routes[path] || routes["/404"];
+            //     routeHandler();
+            // };
+
+            // const handleRouteChange = () => {
+            //     const path = window.location.pathname;
+            //     const routeHandler = routes[path] || routes["/404"];
+            //     routeHandler();
+            // };
+
+            // // Initial load handling
+            // window.addEventListener("load", handleRouteChange);
+
+            // // Handle back/forward button clicks
+            // window.addEventListener("popstate", handleRouteChange);
+
+            // // Handle navigation link clicks
+            const links = document.querySelectorAll("nav ul li a");
+            links.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const path = link.getAttribute("data-route");
+
+                    console.log(path);
+
+                    links.forEach((l) =>
+                        l.parentElement.classList.remove("active"),
+                    );
+                    link.parentElement.classList.add("active");
+
+                    if (path === "home") {
+                        fetchPage(`http://localhost:5002/about`);
+                    } else {
+                        fetchPage(`http://localhost:5002/blog`);
+                    }
+                });
+            });
+
+            // const date = new Date();
+            // const year = date.getFullYear();
+            // document.getElementById("date").innerHTML = year;
+
+            // const main = document.querySelector("main");
+        </script>
+    </body>
+</html>

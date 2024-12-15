@@ -1,2 +1,0 @@
-# jsquare.dev
-Website portfolio
