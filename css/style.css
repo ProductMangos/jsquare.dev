@@ -81,6 +81,7 @@ a:hover {
 
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
@@ -94,4 +95,8 @@ main {
 
 p {
     padding: 10px 0;
+}
+
+div > p {
+    line-height: 2em;
 }
