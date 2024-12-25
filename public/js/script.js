@@ -38,7 +38,7 @@ const handleRouteChange = () => {
         "blog/website": "pages/blogs/website.html",
     };
 
-    const filePath = routes[hash];
+    const filePath = routes[hash] || "pages/about.html";
     
     fetchPage(filePath);
 
