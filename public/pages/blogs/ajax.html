@@ -1,0 +1,16 @@
+<h2>Asynchronous Javascript and XML (AJAX)</h2>
+<div class="blog-date">Dec 25, 2024</div>
+<div class="blog-divider-content"></div>
+<div class="blog-content">
+    <p>To get started, it's probably a good idea to describe AJAX and why it was needed. Asynchronous Javascript and XML (AJAX) is a feature of Javascript that "allows us to send and receive data from a server without having to reload the whole page." So what in the world does that actually mean? We'll need to understand a few things first, starting with page rendering.</p>
+    <h3 style="margin: 20px 0; font-style: italic">Page Rendering</h3>
+    <div style="display: flex; justify-content: center">
+        <img src="assets/DOM.svg" alt="Page Rendering" width="100%" style="text-align: center">
+
+    </div>
+    <p>In a very simplified version: In the beginning of the web... we started with HTML, CSS and later on Javascript. In combination of these three technologies, we were able to provide users across the world with that information (HTML), different styles of that information (CSS) and eventually the enhancing our interactivity with that information (JS). When a user visits a single webpage within a website, the browser calls upon all of these technologies to render all of these elements and scripts on the page. This action of the browser is known as rendering the Document Object Model (DOM). I won't go over the specifics of the DOM but it can be found here if interested:  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">MDN - Web DOM</a></p>
+    <p>When the Document Object Model is rendered - it "paints" all the elements we know and see on the webpage. The actual content doesn't matter as much as the quantity of the information being created through the DOM. The more quantity of the elements, the longer it takes for the browser to render the page. Now that we understand that at a high level, let's discuss a multi-page website.</p>
+    <h3 style="margin: 20px 0; font-style: italic">Multi-page websites</h3>
+    <p>When anyone starts to learn how to build a basic website using code, you'll know that the way we route from page to page is using the anchor tag <code>&lt;a&gt;</code>. Each page that is routed is a brand new page to the browser (ignoring caching) and thus a new instance of the Document Object Model (DOM). For example, when a user first accesses your website, they get to the homepage and then that user navigates to another page, the browser will access the new page and recreate the DOM and render its contents on the page. Each and every time the user navigates through your website using anchor tags, a new instance of the DOM is created and the page is rendered (loaded) on your screen. Think page reload = new instance of the DOM</p>
+    <p>For a long time this way of rendering information was and (still is) acceptable to the users. As time went by, users wanted to be able to see new content on the page without having to reload the page. This is where AJAX comes in. It allows us to send and receive data from a server without having to reload the whole page.</p>
+</div>

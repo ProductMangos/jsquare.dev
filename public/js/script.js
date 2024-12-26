@@ -35,6 +35,7 @@ const handleRouteChange = () => {
     const routes = {
         home: "pages/about.html",
         blog: "pages/blog.html",
+        "blog/ajax": "pages/blogs/ajax.html",
         "blog/website": "pages/blogs/website.html",
     };
 
