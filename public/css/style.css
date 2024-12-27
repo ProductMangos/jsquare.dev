@@ -4,6 +4,7 @@
     --logoblue: rgb(29, 205, 254);
     --logogreen: rgb(52, 245, 198);
     --lightgrey: rgb(200, 200, 200);
+    --orange: rgb(255, 123, 0);
 }
 * {
     margin: 0;
@@ -145,6 +146,13 @@ div > p {
     gap: 10px;
 }
 
+.reference{
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
 @media(max-width: 600px) {
     header {
         display: flex;
@@ -174,4 +182,6 @@ div > p {
         align-items: flex-start;
         margin-top: 2rem;
     }
+
+
 }
