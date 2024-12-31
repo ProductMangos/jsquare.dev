@@ -37,6 +37,7 @@ const handleRouteChange = () => {
         blog: "pages/blog.html",
         "blog/ajax": "pages/blogs/ajax.html",
         "blog/website": "pages/blogs/website.html",
+        "blog/calculators": "pages/blogs/calculators.html",
     };
 
     const filePath = routes[hash] || "pages/about.html";
