@@ -124,6 +124,10 @@ div > p {
     text-decoration-color: var(--logoblue);
 }
 
+.grey {
+    text-decoration-color: var(--lightgrey);
+}
+
 .blog-date {
     font-size: 1rem; 
     padding: 10px 0; 
