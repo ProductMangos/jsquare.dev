@@ -1,15 +1,10 @@
 {
-  "name": "jsquare.dev",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "vite": "^6.1.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "express": "^4.21.2"
+  "scripts": {
+    "dev": "vite", 
+    "build": "vite build", 
+    "serve": "vite preview"
   }
 }

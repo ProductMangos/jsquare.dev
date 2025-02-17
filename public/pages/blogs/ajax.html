@@ -1,0 +1,35 @@
+<h2>Asynchronous Javascript and XML (AJAX)</h2>
+<div class="blog-date">Dec 25, 2024</div>
+<div class="blog-divider-content"></div>
+<div class="blog-content">
+    <p>To get started, it’s a good idea to describe AJAX and why it was needed. Asynchronous JavaScript and XML (AJAX) is a feature of JavaScript that “allows us to send and receive data from a server without having to reload the whole page.” But what does that actually mean? To understand, we need to explore a few foundational concepts, starting with page rendering.</p>
+    <h3 style="margin: 20px 0; font-style: italic">Page Rendering</h3>
+    <div style="display: flex; justify-content: center">
+        <img src="assets/DOM.svg" alt="Page Rendering" width="100%" style="text-align: center">
+    </div>
+    <p>In a simplified version: In the beginning of the web, we started with HTML, CSS, and later JavaScript. The combination of these three technologies allowed us to provide users across the world with information (HTML), style that information (CSS), and eventually enhance interactivity with that information (JavaScript).</p>
+
+    <p>When a user visits a single webpage within a website, the browser processes these technologies to render the elements and scripts on the page. This process is called rendering the Document Object Model (DOM). I won’t dive into the specifics of the DOM here, but if you're interested, you can learn more on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">MDN - Web DOM</a><</p>
+
+    <p>When the DOM is rendered, it “paints” all the elements we see on the webpage. The actual content matters less than the sheer quantity of information being created through the DOM. The greater the number of elements, the longer it takes for the browser to render the page. Now that we understand this at a high level, let’s discuss multi-page websites.</p>
+
+
+    <h3 style="margin: 20px 0; font-style: italic">Multi-page websites</h3>
+    <p>When learning to build a basic website, you’ll discover that navigation between pages is often achieved using the anchor tag <code>&lt;a&gt;</code>. Each page routed via an anchor tag is treated as a new page by the browser (ignoring caching). This means a new instance of the DOM is created for every page.</p>
+    <p>For example, when a user accesses a website’s homepage and then navigates to another page, the browser loads the new page, recreates the DOM, and renders its content. Each time the user navigates through your website using anchor tags, the browser creates a new instance of the DOM and renders (loads) the page on the screen. In essence: page reload = new instance of the DOM.</p>
+    <h3 style="margin: 20px 0; font-style: italic">The Need for AJAX</h3>
+
+    <img src="assets/DOM-ANCHOR.svg" alt="Page Rendering" width="100%" style="text-align: center">
+    <p>For a long time, this method of rendering information was acceptable to users. Over time, however, users wanted the ability to see new content on a page without reloading it. Examples of this include dashboards, message boards, and stock market apps. This is where AJAX comes in. It allows us to send and receive data from a server without reloading the entire page. Imagine if a chat app reloaded the entire page every time someone sent a message—that would be frustrating!</p>
+
+    <h3 style="margin: 20px 0; font-style: italic">AJAX and Single Page Applications</h3>
+    <p>So, how does AJAX address the issue of rendering new information without reloading the entire page? By loading only a specific section of the page and updating it via HTTP requests. AJAX updates the section it’s meant to change without affecting the rest of the page.</p>
+    <p>Returning to the message board example: AJAX updates the messages within the board without modifying anything else on the page. This functionality is the foundation of Single Page Applications (SPAs). SPAs allow multiple sections of a single page to update independently, without requiring a full page reload.</p>
+
+    <h3 style="margin: 20px 0; font-style: italic">Page Rendering in Single Page Applications</h3>
+    <img src="assets/DOMSPA.svg" alt="Page Rendering - Single Page Applications" width="100%" style="text-align: center">
+    <p>You can try out a webpage I made to demonstrate this idea here: <a class="reference" href="https://example-ajax.web.app/">Multiple Page vs Single App Application</a></p>
+
+    <h3 style="margin: 20px 0; font-style: italic">Closing</h3>
+    <p>As the web increasingly moves toward Single Page Applications, I found it helpful to explore the concept without relying on a framework. Learning AJAX gave me a deeper understanding of how it works and how it can be used to build SPAs. Before adopting a framework for SPAs, it’s worth learning AJAX—you may discover that you can build a Single Page Application without any framework at all.</p>
+</div>

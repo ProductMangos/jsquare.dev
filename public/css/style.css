@@ -4,6 +4,7 @@
     --logoblue: rgb(29, 205, 254);
     --logogreen: rgb(52, 245, 198);
     --lightgrey: rgb(200, 200, 200);
+    --orange: rgb(255, 123, 0);
 }
 * {
     margin: 0;
@@ -81,6 +82,7 @@ a:hover {
 
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
@@ -94,4 +96,102 @@ main {
 
 p {
     padding: 10px 0;
+}
+
+div > p {
+    line-height: 2em;
+}
+
+.blog-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tags {
+    margin: 1rem 0;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.green {
+    text-decoration-color: var(--logogreen);
+}
+
+.blue {
+    text-decoration-color: var(--logoblue);
+}
+
+.grey {
+    text-decoration-color: var(--lightgrey);
+}
+
+.blog-border {
+    height: 1px;
+    width: 100%;
+    background-color: var(--lightgrey);
+    opacity: 0.2;
+    margin: 10px 0;
+}
+
+.blog-date {
+    font-size: 1rem;
+    padding: 10px 0;
+    opacity: 0.6;
+}
+
+.blog-divider-content {
+    height: 2px;
+    width: 500px;
+    margin: 40px auto;
+    background-color: var(--lightgrey);
+}
+
+.blog-content {
+    margin: 10px 0;
+}
+
+.tags-container {
+    display: flex;
+    gap: 10px;
+}
+
+.reference {
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+
+        div {
+            text-align: center;
+        }
+    }
+
+    nav ul li {
+        margin-right: 0;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    img {
+        margin-bottom: 2rem;
+    }
+
+    .blog-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 2rem;
+    }
 }
