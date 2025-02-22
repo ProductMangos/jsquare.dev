@@ -4,16 +4,25 @@
 <div class="blog-content">
     <p>We programmers tend to focus all our efforts in building the application and when it's finally complete, we ship it out to the world. Unfortuntely in our drive to push out the application, we tend to place our logging on the backburner. When bugs appear, we'll always wish we had it in place.</p>
     <h3 style="margin: 20px 0; font-style: italic">What does it mean to log?</h3>
-    <p>The action of storing data to be referenced outside of the application is logging. The actual data to be stored can be anything from:
+    <p>The action of storing data to be referenced outside of the application is logging. The actual data to be stored is usually in the categories of:
         <ul style="margin-left: 2rem">
-            <li>Trace</li>
-            <li>Debug</li>
-            <li>Warnings</li>
-            <li>Errors</li>
-            <li>Fatals</li>
-            <li>Misc. Console Logs</li>
-            <li>Etc..</li>
+            <li>Trace - Level 0</li>
+            <li>Info - Level 10</li>
+            <li>Debug - Level 20</li>
+            <li>Warnings - Level 30</li>
+            <li>Errors - Level 40</li>
+            <li>Critical - Level 50</li>
+            <li>Fatals - Level 60</li>
         </ul>
+        <p>The level numbers themselves aren't as important as the name of the category but generally speaking... the more important the error - the higher the level.</p>
+        <p>When logging is written and executed correctly... it's able to collect all of the wanted data throughout the application and store that information in a place that can be easily referenced outside of the application, at any time, regardless of the applications current state (running or not). </p> <p>This ability allows us the developers to review any data from our logging methods for debug or performance reasons, this is especially important for "downed" applications. If the application isn't running, it can't tell you whats wrong at the time of the error, but the logs that reside outside of it can. </p>
     </p>
-    <p></p>
+    <img src="assets/storing-logs.svg" style="width: 100%; margin: 0 auto;"/>
+    <h3 style="margin: 20px 0; font-style: italic">How to start logging?</h3>
+    <p>We're gonna tackle this in a very simple way and that's by attempting to create a logger ourselves! I'm aware that there are many packages across many languages and frameworks that accomplishes this... but there is nothing better to learn then doing it yourself! So at a high level, we know what we want this thing to do... and that's storing information from our application and putting it somewhere for us to reference.</p>
+    <h3 style="margin: 20px 0; font-style: italic">The text file</h3>
+    <p>As a fun piece of knowledge - all loggers start with a simple .txt file. As the logging piece a bit becomes more complex, it may "evolve" into a more structured procedure but they all originally begin at the simple .txt file and that's where we'll begin too.</p>
+    <p>To get started: we'll be using C#/.NET8 to create our simple text file but you can do this an any language you want: </p>
+    <img src="assets/creating-file-log.svg" width="100%"/> 
+    <p>All we're doing here picking a path on where we are going to store our new file, create the file, write to it and/or append to it. Finally, we simply added "This is my Text file!" to the file to show that it's been created.</p>
 </div>

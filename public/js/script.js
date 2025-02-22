@@ -8,49 +8,49 @@ const octokit = new Octokit({
 const main = document.querySelector("main");
 
 // Get Blogs from Github Issues
-const displayRepoIssues = async (owner, repo) => {
-    try {
-        const response = await octokit.request(
-            "GET /repos/{owner}/{repo}/issues/",
-            {
-                owner,
-                repo,
-                headers: {
-                    "X-GitHub-Api-Version": "2022-11-28",
-                },
-            }
-        );
+// const displayRepoIssues = async (owner, repo) => {
+//     try {
+//         const response = await octokit.request(
+//             "GET /repos/{owner}/{repo}/issues/",
+//             {
+//                 owner,
+//                 repo,
+//                 headers: {
+//                     "X-GitHub-Api-Version": "2022-11-28",
+//                 },
+//             }
+//         );
 
-        const data = response.data;
+//         const data = response.data;
 
-        const findRouteName = (data) => {
-            for (let label of data.labels) {
-                if (label.name.includes("Route")) {
-                    console.log(label.description);
-                    return label.description; 
-                }
-            }
-            return ""; 
-        };
+//         const findRouteName = (data) => {
+//             for (let label of data.labels) {
+//                 if (label.name.includes("Route")) {
+//                     return label.description; 
+//                 }
+//             }
+//             return ""; 
+//         };
 
-        const blogContainer = document.getElementById("blog-container");
-        if (!blogContainer) return;
+//         const blogContainer = document.getElementById("blog-container");
+//         if (!blogContainer) return;
 
-        data.forEach(issue => {
-            let route = findRouteName(issue);
-            if (issue.labels) {
-                blogContainer.innerHTML += `
-                    <a href="${route}">
-                        <h1>${issue.title}</h1>
-                    </a>
-                    <p>${marked.parse(issue.body)}</p>
-                    <div class="blog-border"></div>`;
-            }
-        });
-    } catch (error) {
-        console.error("Error fetching issues:", error);
-    }
-}
+//         data.forEach(issue => {
+//             let route = findRouteName(issue);
+//             console.log(issue);
+//             if (issue.labels) {
+//                 blogContainer.innerHTML += `
+//                     <a href="${route}">
+//                         <h1>${issue.title}</h1>
+//                     </a>
+//                     <p>${marked.parse(issue.body)}</p>
+//                     <div class="blog-border"></div>`;
+//             }
+//         });
+//     } catch (error) {
+//         console.error("Error fetching issues:", error);
+//     }
+// }
 
 const fetchPage = async (filePath) => {
     try {
@@ -65,10 +65,10 @@ const fetchPage = async (filePath) => {
             throw new Error(`Response status: ${response.status}`);
         }
 
-        if (response.url.includes("blog")) {
-            displayRepoIssues("ProductMangos", "jsquare.dev");
+        // if (response.url.includes("blog")) {
+        //     displayRepoIssues("ProductMangos", "jsquare.dev");
 
-        }
+        // }
 
         const html = await response.text();
         main.innerHTML = html;
