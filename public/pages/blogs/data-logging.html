@@ -31,4 +31,11 @@
     <p>As of today, JSON is considered the more "modern" and widely used format for storing and sending data. On occasion you may encounter XML as that was the preferred previous format prior to JSON. The format of the data coming through isn't as important for what we are attempting to understanding but just know that were commonly these two types for logging data. </p>
     <p>Okay, so let's create that JSON example in our newly created logging.txt file:</p>
     <img src="assets/to-json-logging.svg" width="100%"/>
+    <p>Here we added our test obj to pass into our logger.txt file. We added time, level, type, message and our environment to store into our .txt file. Once we created our test object, we converted the obj into a JSON format and passed that information into our static logger file. This is what it'll look like with all of the levels passed in: </p>
+    <img src="assets/json-txt-log-file.svg" width="100%"/>
+    <p>If you ever looked at a static text file for logged information - you'll notice that we are pretty much looking right there! The format is looking good and the data is being stored in a location independent to our application. We have a little more to do but it's definitely coming together.</p>
+    <h3 style="margin: 20px 0; font-style: italic">Making our function reusable</h3>
+    <p>Now that we are have working function that is able to create the file and write down the logging data in a JSON format, we'll need to make it "reuseable". What we mean to make it reuseable, it breaking down the code into separate classes/methods that we can call the same exact code throughout our application using single liners oppose to copy/paste. I won't go over exactly how to go about it as that will make this blog post too long... maybe it'll be a separate one on it's own but here is what this would look like: </p>
+    <img src="assets/class-function-log.svg" width="100%"/>
+    <p>We broke up the file creation function along with our JSON object into it's own method called AddToLogger(). We then created separate methods within the same Logger class to call out the different categories of logging. Finally, we call our Logger class with our new AddTracer() method into our application. What we've done here is now simpified our logging with a single line of code with a message.</p>
 </div>
