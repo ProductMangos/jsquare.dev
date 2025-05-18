@@ -1,8 +1,8 @@
 // Get issues from Github
-import { Octokit } from "https://esm.sh/octokit";
-const octokit = new Octokit({
-    auth: import.meta.env.VITE_GITHUB_API,
-});
+// import { Octokit } from "https://esm.sh/octokit";
+// const octokit = new Octokit({
+//     auth: import.meta.env.VITE_GITHUB_API,
+// });
 
 
 const main = document.querySelector("main");
@@ -26,10 +26,10 @@ const main = document.querySelector("main");
 //         const findRouteName = (data) => {
 //             for (let label of data.labels) {
 //                 if (label.name.includes("Route")) {
-//                     return label.description; 
+//                     return label.description;
 //                 }
 //             }
-//             return ""; 
+//             return "";
 //         };
 
 //         const blogContainer = document.getElementById("blog-container");
@@ -96,6 +96,7 @@ const handleRouteChange = () => {
         "blog/website": "pages/blogs/website.html",
         "blog/calculators": "pages/blogs/calculators.html",
         "blog/data-logging": "pages/blogs/data-logging.html",
+        "blog/web-dev-mess": "pages/blogs/web-dev-mess.html"
     };
 
     const filePath = routes[hash] || "pages/about.html";
@@ -138,4 +139,3 @@ window.addEventListener("load", handleRouteChange);
 const date = new Date();
 const year = date.getFullYear();
 document.getElementById("date").innerHTML = year;
-

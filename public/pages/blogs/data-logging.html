@@ -1,41 +1,55 @@
 <h2>Logging that Data</h2>
-<div class="blog-date">Feb 1, 2024</div>
-<div class="blog-divider-content"></div>
-<div class="blog-content">
-    <p>We programmers tend to focus all our efforts in building the application and when it's finally complete, we ship it out to the world. Unfortuntely in our drive to push out the application, we tend to place our logging on the backburner. When bugs appear, we'll always wish we had it in place.</p>
-    <h3 style="margin: 20px 0; font-style: italic">What does it mean to log?</h3>
-    <p>The action of storing data to be referenced outside of the application is logging. The actual data to be stored is usually in the categories of:
-        <ul style="margin-left: 2rem">
-            <li>Trace - Level 0</li>
-            <li>Info - Level 10</li>
-            <li>Debug - Level 20</li>
-            <li>Warnings - Level 30</li>
-            <li>Errors - Level 40</li>
-            <li>Critical - Level 50</li>
-            <li>Fatals - Level 60</li>
-        </ul>
-        <p>The level numbers themselves aren't as important as the name of the category but generally speaking... the more important the error - the higher the level.</p>
-        <p>When logging is written and executed correctly... it's able to collect all of the wanted data throughout the application and store that information in a place that can be easily referenced outside of the application, at any time, regardless of the applications current state (running or not). </p> <p>This ability allows us the developers to review any data from our logging methods for debug or performance reasons, this is especially important for "downed" applications. If the application isn't running, it can't tell you whats wrong at the time of the error, but the logs that reside outside of it can. </p>
-    </p>
-    <img src="assets/storing-logs.svg" style="width: 100%; margin: 0 auto;"/>
+<div class="blog-date">Feb 1, 2024</div> 
+<div class="blog-divider-content"></div> 
+<div class="blog-content"> 
+    <p>We programmers tend to focus all our efforts on building the application, and when it's finally complete, we ship it out to the world. Unfortunately, in our drive to push out the application, we often place logging on the back burner. When bugs appear, we always wish we had implemented it earlier.</p> 
+    <h3 style="margin: 20px 0; font-style: italic">What does it mean to log?</h3> 
+    <p>Logging is the action of storing data for reference outside of the application. The stored data usually falls into the following categories:</p> 
+    <ul style="margin-left: 2rem"> 
+        <li>Trace - Level 0</li> 
+        <li>Info - Level 10</li> 
+        <li>Debug - Level 20</li> 
+        <li>Warnings - Level 30</li> 
+        <li>Errors - Level 40</li> 
+        <li>Critical - Level 50</li> 
+        <li>Fatals - Level 60</li> 
+    </ul> 
+    <p>The level numbers themselves aren't as important as the category names. Generally speaking, the more critical the issue, the higher the level.</p> 
+    <p>When logging is implemented correctly, it collects all the necessary data throughout the application and stores it in a place that can be easily accessed at any time, regardless of the application's current state (running or not). </p> 
+    <p>This ability allows developers to review logged data for debugging or performance analysis—especially crucial for applications that have crashed. If the application isn't running, it can't provide real-time error feedback, but the logs stored externally can.</p> 
+    <img src="assets/storing-logs.svg" style="width: 100%; margin: 0 auto;"/> 
+
     <h3 style="margin: 20px 0; font-style: italic">How to start logging?</h3>
-    <p>We're gonna tackle this in a very simple way and that's by attempting to create a logger ourselves! I'm aware that there are many packages across many languages and frameworks that accomplishes this... but there is nothing better to learn then doing it yourself! So at a high level, we know what we want this thing to do... and that's storing information from our application and putting it somewhere for us to reference.</p>
-    <h3 style="margin: 20px 0; font-style: italic">The text file</h3>
-    <p>As a fun piece of knowledge - all loggers start with a simple .txt file. As the logging piece a bit becomes more complex, it may "evolve" into a more structured procedure but they all originally begin at the simple .txt file and that's where we'll begin too.</p>
-    <p>To get started: we'll be using C#/.NET8 to create our simple text file but you can do this an any language you want: </p>
-    <img src="assets/creating-file-log.svg" width="100%"/> 
-    <p>All we're doing here picking a path on where we are going to store our new file, create the file, write to it and/or append to it. Finally, we simply added "This is my Text file!" to the file to show that it's been created.</p>
-    <img src="assets/first-log.svg" width="50%" style="margin: 0 auto;"/>
-    <p>The take away here is that we successfully created a separate file called logging.txt from our internal application and placed it into an external file. I'm positive that many of you probably are thinking... "well so what? This is just basic file creation?". And... you would be correct, what we are going to do with it next is what we're going to focus on and be considered the basis of logging. This is just step one and one of the most important steps because now we just created the piece that exists outside of our application.</p>
-    <h3 style="margin: 20px 0; font-style: italic">Creating the JSON format</h3>
-    <p>As of today, JSON is considered the more "modern" and widely used format for storing and sending data. On occasion you may encounter XML as that was the preferred previous format prior to JSON. The format of the data coming through isn't as important for what we are attempting to understanding but just know that were commonly these two types for logging data. </p>
-    <p>Okay, so let's create that JSON example in our newly created logging.txt file:</p>
-    <img src="assets/to-json-logging.svg" width="100%"/>
-    <p>Here we added our test obj to pass into our logger.txt file. We added time, level, type, message and our environment to store into our .txt file. Once we created our test object, we converted the obj into a JSON format and passed that information into our static logger file. This is what it'll look like with all of the levels passed in: </p>
-    <img src="assets/json-txt-log-file.svg" width="100%"/>
-    <p>If you ever looked at a static text file for logged information - you'll notice that we are pretty much looking right there! The format is looking good and the data is being stored in a location independent to our application. We have a little more to do but it's definitely coming together.</p>
-    <h3 style="margin: 20px 0; font-style: italic">Making our function reusable</h3>
-    <p>Now that we are have working function that is able to create the file and write down the logging data in a JSON format, we'll need to make it "reuseable". What we mean to make it reuseable, it breaking down the code into separate classes/methods that we can call the same exact code throughout our application using single liners oppose to copy/paste. I won't go over exactly how to go about it as that will make this blog post too long... maybe it'll be a separate one on it's own but here is what this would look like: </p>
-    <img src="assets/class-function-log.svg" width="100%"/>
-    <p>We broke up the file creation function along with our JSON object into it's own method called AddToLogger(). We then created separate methods within the same Logger class to call out the different categories of logging. Finally, we call our Logger class with our new AddTracer() method into our application. What we've done here is now simpified our logging with a single line of code with a message.</p>
-</div>
+     <p>We're going to tackle this in a simple way—by creating a logger ourselves! While many packages across various languages and frameworks accomplish this, there's no better way to learn than by doing it yourself. At a high level, we know what we want: to store information from our application in an external location for future reference.</p> 
+
+     <h3 style="margin: 20px 0; font-style: italic">The text file</h3> 
+     <p>As a fun fact, all loggers start with a simple .txt file. As logging needs become more complex, the process may "evolve" into a more structured system, but it all begins with a basic text file—and that's where we'll start.</p> <p>To get started, we'll use C#/.NET 8 to create our simple text file, but you can do this in any language:</p> 
+     <img src="assets/creating-file-log.svg" width="100%"/> 
+     <p>All we're doing here is choosing a location to store our new file, creating the file, writing to it, and/or appending data. Finally, we add "This is my text file!" to confirm that it has been created.</p> 
+     <img src="assets/first-log.svg" width="50%" style="margin: 0 auto;"/> 
+     <p>The takeaway here is that we've successfully created a separate file called **logging.txt** outside of our application. You might be thinking, "So what? This is just basic file creation." And you would be right! However, what we do next is what defines logging. This is just step one, and it's a crucial step—it establishes an external storage system for our application's data.</p> 
+
+     <h3 style="margin: 20px 0; font-style: italic">Creating the JSON format</h3> 
+     <p>Today, JSON is considered the modern and widely used format for storing and transmitting data. Occasionally, you might encounter XML, which was the preferred format before JSON. While the format isn't critical to our understanding of logging, these two are the most commonly used.</p> <p>Now, let's create a JSON example in our newly created **logging.txt** file:</p>  
+     <img src="assets/to-json-logging.svg" width="100%"/> 
+     <p>Here, we add a test object to be logged in **logger.txt**. We include details like time, level, type, message, and environment. Once we create our test object, we convert it to JSON format and pass that information into our static logger file. This is what the log file looks like with all levels included:</p> 
+     <img src="assets/json-txt-log-file.svg" width="100%"/> 
+     <p>If you've ever looked at a raw log file, this should look familiar! The format is well-structured, and the data is stored independently of the application. There's still more work to do, but things are coming together.</p> 
+
+     <h3 style="margin: 20px 0; font-style: italic">Making our function reusable</h3> 
+     <p>Now that we have a working function that creates the file and writes logging data in JSON format, we need to make it reusable. This means breaking the code into separate classes and methods so that we can call the same logic throughout our application using single-line function calls instead of copy-pasting.</p> 
+     <p>I won’t go into full detail here, as that would make this blog post too long—perhaps it warrants its own post. But here's what it looks like:</p> 
+     <img src="assets/class-function-log.svg" width="100%"/> 
+     <p>We broke the file creation function and JSON object logic into a method called **AddToLogger()**. Then, we created separate methods within the **Logger** class to handle different logging categories. Finally, we call our **Logger** class using the **AddTracer()** method within our application. This simplifies logging to a single line of code with a message.</p> 
+
+     <h3 style="margin: 20px 0; font-style: italic">Completing it with a basic example</h3> 
+     <img src="assets/complete-log.svg" width="100%"/> 
+     <p>We integrated our basic console app with an API call and applied our newly created **Logger.AddTrace()** method. Now, each API call records relevant information in **logging.txt**. Just like that, we have basic logging in place! This approach allows us to manually add logging to any part of our application and reference it externally whenever needed. We can even take it a step further by integrating a visualization tool like **Grafana** to read our logs dynamically!</p> 
+
+     <h3 style="margin: 20px 0; font-style: italic">How to take it to the next level?</h3> 
+     <p>What we've implemented here is very basic—there are many enhancements we could incorporate, such as web availability logging, database connection monitoring, memory usage tracking, and console log integration. However, this simple approach provides a solid starting point. Keeping logging straightforward ensures we stay on top of every change and implementation.</p> 
+
+     <h3 style="margin: 20px 0; font-style: italic">Conclusion</h3> 
+     <p>As we've seen, creating a logging system that records data in an external file is quite simple. The key is to keep it focused and aligned with our goals.</p> 
+     <p>P.S. I thought of coding out a more completed example with the web availability logging, background processes and hooking it up to Grafana for visualization, but this was getting too long and I'm losing focus. If you'd like to see it, let me know on LinkedIn!</p>
+    </div>
